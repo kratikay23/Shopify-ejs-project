@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>View Products</title>
+    <%- include("__bootstrap.ejs") %>
+</head>
+
+<body>
+    <%- include("__header.ejs") %>
+
+    <div class="container mt-4">
+        <h2 class="text-center">Product List</h2>
+        <div class="row">
+            <% products.forEach(product => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/uplode/<%= product.Images %>" class="card-img-top" alt="Product Image"
+                            onerror="console.log('Error loading:', this.src)" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.pName %></h5>
+                            <p class="card-text"><%= product.description %></p>
+                            <h6 class="text-danger">₹<%= product.price %></h6>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a href="/product/edit/<%= product.id %>" class="btn btn-outline-primary">Edit</a>
+                            <a onclick="return confirm('Do you want to delete it?')" href="/product/delete/<%= product.id %>"
+                                class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+
+</html>

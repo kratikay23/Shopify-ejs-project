@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify</title>
+    <%-include("__bootstrap.ejs")%>
+</head>
+
+<body>
+    <%-include("__userheader.ejs")%>
+    <form action="/checkout" method="post">
+        <div class="form-group">
+            <label for="address">Delivery Address:</label>
+            <textarea id="address" name="address" class="form-control" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method" class="form-control" required>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="UPI">UPI</option>
+                <option value="Net Banking">Net Banking</option>
+                <option value="Cash on Delivery">Cash on Delivery</option>
+            </select>
+        </div>
+
+        <input type="hidden" name="total_amount"
+            value="<%= cartProducts.reduce((total, product) => total + parseFloat(product.price), 0) %>">
+
+        <button type="submit" class="btn btn-success" onclick="return confirm('Do you wnat to Confirm Order..')">Confirm & Pay</button>
+    </form>
+
+</body>
+
+</html>

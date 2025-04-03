@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sign-in</title>
+  <%-include("__bootstrap.ejs")%>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center" style="height:600px;">
+    <div style="height:auto; width: 30%;box-shadow: 10px 10px 10px grey;">
+        <form method="post" action="/sign-in" class="p-3">
+            <div class="form-group">
+                <label>Email Id</label>
+                <input name="email" type="text" placeholder="Enter email id" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Enter password</label>
+                <input name="password" type="password" placeholder="Enter password" class="form-control"/>
+            </div>
+            <span>New User? <a href="/sign-up">Create Your Account.</a></span>
+            <div class="form-group">
+              <button type="submit" class="btn btn-secondary" style="width:100%">Sign In</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</body>
+</html>
